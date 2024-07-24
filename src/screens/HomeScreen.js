@@ -1,5 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ScrollView,
+  StatusBar,
+  Image,
+} from "react-native";
+import { Icon } from "react-native-elements";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
@@ -8,7 +17,39 @@ import { colors, parameters } from "../global/styles";
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>HELLO TO HOME</Text>
+      <View style={styles.header}>
+        <View style={styles.icon1}>
+          <Icon
+            type="material-community"
+            name="menu"
+            color={colors.white}
+            size={40}
+          />
+        </View>
+      </View>
+
+      <ScrollView bounces={false}>
+        <View style={styles.home}>
+          <Text style={styles.text1}>Destress your commute</Text>
+          <View style={styles.view1}>
+            <View style={styles.view8}>
+              <Text style={styles.text2}>
+                Read a book.Take a nap. Stare out the window
+              </Text>
+              <View style={styles.button1}>
+                <Text style={styles.button1Text}>Ride with uber</Text>
+              </View>
+            </View>
+            <View>
+              <Image
+                style={styles.image1}
+                source={require("../../assets/uberCar.png")}
+              />
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+      <StatusBar style="light" backgroundColor="#2058c0" translucent={true} />
     </View>
   );
 };
