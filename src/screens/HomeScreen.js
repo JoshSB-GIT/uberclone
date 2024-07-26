@@ -18,6 +18,7 @@ import { colors, parameters } from "../global/styles";
 
 const HomeScreen = () => {
   return (
+    // HEADER
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.icon1}>
@@ -50,6 +51,7 @@ const HomeScreen = () => {
             </View>
           </View>
         </View>
+        {/* Flat list icons container */}
         <View>
           <FlatList
             numRows={4}
@@ -68,6 +70,54 @@ const HomeScreen = () => {
               </View>
             )}
           />
+        </View>
+        {/* check */}
+        <View style={styles.view3}>
+          <Text style={styles.text3}> Where to ?</Text>
+          <View style={styles.view4}>
+            <Icon
+              type="material-community"
+              name="clock-time-four"
+              color={colors.grey1}
+              size={26}
+            />
+            <Text style={{ marginLeft: 5 }}>Now</Text>
+            <Icon
+              type="material-community"
+              name="chevron-down"
+              color={colors.grey1}
+              size={26}
+            />
+          </View>
+        </View>
+
+        <View style={styles.view5}>
+          <View style={styles.view6}>
+            <View style={styles.view7}>
+              <Icon
+                type="material-community"
+                name="map-marker"
+                color={colors.black}
+                size={22}
+              />
+            </View>
+            <View>
+              <Text style={{ fontSize: 18, color: colors.black }}>
+                32 Olivia Rd
+              </Text>
+              <Text style={{ color: colors.grey3 }}>
+                Klipfontein 83-Ir, Boksburg
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Icon
+              type="material-community"
+              name="chevron-right"
+              color={colors.grey}
+              size={26}
+            />
+          </View>
         </View>
       </ScrollView>
       <StatusBar style="light" backgroundColor="#2058c0" translucent={true} />
