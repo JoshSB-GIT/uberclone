@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import React, { useState, useRef, useEffect } from "react";
 import {
   StyleSheet,
@@ -5,21 +6,20 @@ import {
   View,
   Dimensions,
   ScrollView,
-  StatusBar,
   Image,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { Icon } from "react-native-elements";
-import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps"; // Import Marker aquí
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import * as Location from "expo-location";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
-
 import { colors, parameters } from "../global/styles";
 import { filterData, carsAround } from "../global/data";
 import { mapStyle } from "../global/mapStyle";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [latlng, setLatLng] = useState({});
 
   const checkPermission = async () => {
@@ -43,15 +43,18 @@ const HomeScreen = () => {
       const {
         coords: { latitude, longitude },
       } = await Location.getCurrentPositionAsync();
-      setLatLng({ latitude, longitude });
+      setLatLng({ latitude: latitude, longitude: longitude });
     } catch (err) {}
   };
+
   const _map = useRef(1);
 
   useEffect(() => {
     checkPermission();
-    getLocation();
-  }, []);
+    getLocation(),
+      // console.log(latlng)
+      [];
+  });
 
   return (
     <View style={styles.container}>
@@ -65,7 +68,6 @@ const HomeScreen = () => {
           />
         </View>
       </View>
-
       <ScrollView bounces={false}>
         <View style={styles.home}>
           <Text style={styles.text1}>Destress your commute</Text>
@@ -74,9 +76,15 @@ const HomeScreen = () => {
               <Text style={styles.text2}>
                 Read a book.Take a nap. Stare out the window
               </Text>
-              <View style={styles.button1}>
-                <Text style={styles.button1Text}>Ride with uber</Text>
-              </View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("RequestScreen", { state: 0 });
+                }}
+              >
+                <View style={styles.button1}>
+                  <Text style={styles.button1Text}>Ride with Uber</Text>
+                </View>
+              </TouchableOpacity>
             </View>
             <View>
               <Image
@@ -86,6 +94,7 @@ const HomeScreen = () => {
             </View>
           </View>
         </View>
+
         <View>
           <FlatList
             numRows={4}
@@ -123,7 +132,6 @@ const HomeScreen = () => {
             />
           </View>
         </View>
-
         <View style={styles.view5}>
           <View style={styles.view6}>
             <View style={styles.view7}>
@@ -183,6 +191,7 @@ const HomeScreen = () => {
         </View>
 
         <Text style={styles.text4}> Around you</Text>
+
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <MapView
             ref={_map}

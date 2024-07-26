@@ -1,15 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import HomeScreen from "./src/screens/HomeScreen";
-import { colors, parameters } from "./src/global/styles";
-
-const SCREEN_WIDTH = Dimensions.get("window").width;
+import RoootNavigator from "./src/navigations/RootNavigator";
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <HomeScreen />
-    </View>
+    <RoootNavigator />
+    // <View style={styles.container}>
+    //   <HomeScreen />
+    // </View>
   );
 };
 
