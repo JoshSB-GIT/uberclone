@@ -119,6 +119,37 @@ const HomeScreen = () => {
             />
           </View>
         </View>
+
+        <View style={{ ...styles.view5, borderBottomWidth: 0 }}>
+          <View style={styles.view6}>
+            <View style={styles.view7}>
+              <Icon
+                type="material-community"
+                name="map-marker"
+                color={colors.black}
+                size={22}
+              />
+            </View>
+            <View>
+              <Text style={{ fontSize: 18, color: colors.black }}>
+                32 Olivia Rd
+              </Text>
+              <Text style={{ color: colors.grey3 }}>
+                Klipfontein 83-Ir, Boksburg
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Icon
+              type="material-community"
+              name="chevron-right"
+              color={colors.grey}
+              size={26}
+            />
+          </View>
+        </View>
+
+        <Text style={styles.text4}> Around you</Text>
       </ScrollView>
       <StatusBar style="light" backgroundColor="#2058c0" translucent={true} />
     </View>
