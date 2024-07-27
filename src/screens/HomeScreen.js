@@ -59,14 +59,16 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.icon1}>
-          <Icon
-            type="material-community"
-            name="menu"
-            color={colors.white}
-            size={40}
-          />
-        </View>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <View style={styles.icon1}>
+            <Icon
+              type="material-community"
+              name="menu"
+              color={colors.white}
+              size={40}
+            />
+          </View>
+        </TouchableOpacity>
       </View>
       <ScrollView bounces={false}>
         <View style={styles.home}>
